@@ -29,8 +29,8 @@ app.get("/luck", (req, res) => {
 
 app.get("/janken", (req, res) => {
   let hand = req.query.hand;
-  let win = Number( req.query.win );
-  let total = Number( req.query.total );
+  let win = Number( req.query.win )||0;
+  let total = Number( req.query.total )||0;
   console.log( {hand, win, total});
   const num = Math.floor( Math.random() * 3 + 1 );
   let cpu = '';
@@ -42,6 +42,7 @@ app.get("/janken", (req, res) => {
 
   // ここに勝敗の判定を入れる
   if( hand=='グー'){
+    total += 1;//ゲームカウントを増やす
     if( cpu=='グー'){
       judgement = '引き分け';
     }
@@ -54,6 +55,7 @@ app.get("/janken", (req, res) => {
     }
   }
   if( hand=='チョキ'){
+    total += 1;//ゲームカウントを増やす
     if( cpu=='グー'){
       judgement = '負け';
     }
@@ -66,6 +68,7 @@ app.get("/janken", (req, res) => {
     }
   }
   if( hand=='パー'){
+    total += 1;//ゲームカウントを増やす
     if( cpu=='グー'){
       judgement = '勝ち';
       win += 1;
@@ -77,8 +80,6 @@ app.get("/janken", (req, res) => {
       judgement = '引き分け';
     }
   }
-
-  total += 1;//ゲームカウントを増やす
 
   const display = {
     your: hand,
