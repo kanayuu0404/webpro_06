@@ -53,6 +53,30 @@ app.get("/janken", (req, res) => {
       judgement = '負け';
     }
   }
+  if( hand=='チョキ'){
+    if( cpu=='グー'){
+      judgement = '負け';
+    }
+    else if( cpu=='チョキ'){
+      judgement = '引き分け';
+      win += 1;
+    }
+    else{
+      judgement = '勝ち';
+    }
+  }
+  if( hand=='パー'){
+    if( cpu=='グー'){
+      judgement = '勝ち';
+    }
+    else if( cpu=='チョキ'){
+      judgement = '負け';
+      win += 1;
+    }
+    else{
+      judgement = '引き分け';
+    }
+  }
 
   total += 1;//ゲームカウントを増やす
 
