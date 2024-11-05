@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>複合ダイス</title>
+</head>
+<body>
+    <p>左に振るサイコロの数、右に振るサイコロの面数を入力すると、出たサイコロの目の合計を出してくれるよ</p>
+    <p>例:6面(1~6)のサイコロを2個振る</p>
+    <p>  2d6 → (3,4) → 3+4 → 7</p>
+    <form action="/dice">
+        <input type="text" name="kosuu" required>
+        d
+        <input type="text" name="men" required>
+        <label for="kosuu"></label>
+        <label for="men"></label>
+        <input type="hidden" name="dice" value="<%= dice %>">
+        <input type="submit" values="振る">
+    </form>
+    <hr>
+    <p>→<%= dice %></p>
+</body>
+</html>

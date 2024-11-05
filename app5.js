@@ -91,4 +91,28 @@ app.get("/janken", (req, res) => {
   res.render( 'janken', display );
 });
 
+app.get("/dice", (req, res) => {
+
+  let kosuu = Number(req.query.kosuu) || 0;  // サイコロを振る回数
+  let men = Number(req.query.men) || 0;      // サイコロの目の最大値
+  let dice = Number(req.query.total) || 0;   // サイコロの目の合計
+
+  console.log({kosuu, men, dice});
+
+  for (let i = 0; i < kosuu; i++) {    // サイコロを 'kosuu' 回振る
+    dice = dice + Math.floor(Math.random() * men) + 1;  // ランダムな目を合計に加算
+  }
+
+  res.render('dice', {dice: dice});
+});
+
+app.get("/luck3", (req, res) => {
+  const num = Math.floor( Math.random() * 20 + 1 );
+  let luck3 = '';
+  if( num==1 ) luck3 = '大当たり';
+  else if( num >= 2 && num < 5 ) luck3 = '当たり';
+  else if( num >= 5 && num <= 20 ) luck3 = 'ハズレ';
+  res.render( 'luck3', {number:num, luck3:luck3} );
+});
+
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
