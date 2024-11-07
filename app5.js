@@ -92,18 +92,17 @@ app.get("/janken", (req, res) => {
 });
 
 app.get("/dice", (req, res) => {
-
   let kosuu = Number(req.query.kosuu) || 0;  // サイコロを振る回数
   let men = Number(req.query.men) || 0;      // サイコロの目の最大値
-  let dice = Number(req.query.total) || 0;   // サイコロの目の合計
-
+  let dice = 0;   // サイコロの目の合計
+  let dices = [];
   console.log({kosuu, men, dice});
-
   for (let i = 0; i < kosuu; i++) {    // サイコロを 'kosuu' 回振る
-    dice = dice + Math.floor(Math.random() * men) + 1;  // ランダムな目を合計に加算
+    let roll = Math.floor(Math.random() * men) + 1;  // サイコロの目をランダムに生成
+    dice += roll  // 出た目を加算
+    dices.push(roll); //配列にそれぞれのサイコロの目を格納
   }
-
-  res.render('dice', {dice: dice});
+  res.render('dice', {dice: dice, dices: dices});
 });
 
 app.get("/luck3", (req, res) => {
