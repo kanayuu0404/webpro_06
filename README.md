@@ -85,6 +85,6 @@ dice --> dices
 dices --> if
 if -->|yes| hyouji1
 if -->|no| roll
-hoyuji1 --> hyouji2
+hyouji1 --> hyouji2
 hyouji2 --> end1
 ```
