@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 
 app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
@@ -32,6 +33,11 @@ app.get("/janken", (req, res) => {
   let win = Number( req.query.win )||0;
   let total = Number( req.query.total )||0;
   console.log( {hand, win, total});
+
+  if (!hand) {
+    return res.sendFile(path.join(__dirname, "public", "janken.html"));
+  }
+
   const num = Math.floor( Math.random() * 3 + 1 );
   let cpu = '';
   if( num==1 ) cpu = 'グー';
