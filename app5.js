@@ -30,8 +30,8 @@ app.get("/luck", (req, res) => {
 
 app.get("/janken", (req, res) => {
   let hand = req.query.hand;
-  let win = Number( req.query.win )||0;
-  let total = Number( req.query.total )||0;
+  let win = Number( req.query.win );
+  let total = Number( req.query.total );
   console.log( {hand, win, total});
 
   if (!hand) {
@@ -98,8 +98,13 @@ app.get("/janken", (req, res) => {
 });
 
 app.get("/dice", (req, res) => {
-  let kosuu = Number(req.query.kosuu) || 0;  // サイコロを振る回数
-  let men = Number(req.query.men) || 0;      // サイコロの目の最大値
+  let kosuu = Number(req.query.kosuu);  // サイコロを振る回数
+  let men = Number(req.query.men);      // サイコロの目の最大値
+
+  if (!kosuu && !men) {
+    return res.sendFile(path.join(__dirname, "public", "dice.html"));
+  }
+
   let dice = 0;   // サイコロの目の合計
   let dices = [];
   console.log({kosuu, men, dice});
@@ -108,7 +113,7 @@ app.get("/dice", (req, res) => {
     dice += roll  // 出た目を加算
     dices.push(roll); //配列にそれぞれのサイコロの目を格納
   }
-  res.render('dice', {dice: dice, dices: dices});
+  res.render('dice', {dice: dice, dices: dices, kosuu: kosuu, men: men});
 });
 
 app.get("/luck3", (req, res) => {
