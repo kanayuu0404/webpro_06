@@ -56,13 +56,13 @@ public/dice.html | 複合ダイスの開始画面
 views/dice.ejs | 複合ダイスの表示コード
 
 ### 使用手順
-2. ターミナルでapp5.js を起動する(node app5.js)
-2. 別のターミナルを開き8080のポートに対応させる(telnet localhost 8080)
-2. 8080ポートに複合ダイスのプログラムを読み込ませる
+1. ターミナルでapp5.js を起動する(node app5.js)
+1. 別のターミナルを開き8080のポートに対応させる(telnet localhost 8080)
+1. 8080ポートに複合ダイスのプログラムを読み込ませる
 (GET /dice HTTP/1.1
 Host: localhost)
-2. Webブラウザで[http://localhost:8080/dice]にアクセスする
-2. 振りたいダイスの個数と面数(出てくる数の最大値)を指定する
+1. Webブラウザで[http://localhost:8080/dice]にアクセスする
+1. 振りたいダイスの個数と面数(出てくる数の最大値)を指定する
 
 ### フローチャート
 ```mermaid
@@ -71,16 +71,20 @@ flowchart TD;
 start["開始"];
 end1["終了"]
 sitei["ダイスの数と面数を指定"]
-roll["1から指定したダイスの面数を最大値までの間の整数からランダムに数字を選ぶ"]
-dice["出た値を配列に格納"]
+roll["1から指定したダイスの面数までの間の整数からランダムにダイスの目を選ぶ"]
+dice["出た目を配列に格納"]
 dices["配列の中身の合計を計算する"]
 if{"指定したダイスの数だけ行われたか"}
+hyouji1["配列の中身(すべてのダイスの目)を表示"]
+hyouji2["配列の中身の合計(ダイスの目の合計)を表示"]
 
 start --> sitei
 sitei --> roll
 roll --> dice
 dice --> dices
 dices --> if
-if -->|yes| end1
+if -->|yes| hyouji1
 if -->|no| roll
+hoyuji1 --> hyouji2
+hyouji2 --> end1
 ```
