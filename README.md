@@ -74,17 +74,16 @@ sitei["ダイスの数と面数を指定"]
 roll["1から指定したダイスの面数までの間の整数からランダムにダイスの目を選ぶ"]
 dice["出た目を配列に格納"]
 dices["配列の中身の合計を計算する"]
-if{"指定したダイスの数だけ行われたか"}
+loop["指定したダイスの回数分、繰り返し処理"]
 hyouji1["配列の中身(すべてのダイスの目)を表示"]
 hyouji2["配列の中身の合計(ダイスの目の合計)を表示"]
 
 start --> sitei
-sitei --> roll
-roll --> dice
-dice --> dices
-dices --> if
-if -->|yes| hyouji1
-if -->|no| roll
+sitei --> loop
+loop --> roll
+loop --> dice
+loop --> dices
+dice --> hyouji1
 hyouji1 --> hyouji2
 hyouji2 --> end1
 ```
