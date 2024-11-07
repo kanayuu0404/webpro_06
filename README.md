@@ -37,7 +37,7 @@ loose["負け"]
 
 start --> cpu
 cpu --> hito
-start --> if
+hito --> if
 if -->|yes| win
 win --> end1
 if -->|no| loose
