@@ -43,7 +43,6 @@ hito --> if
 if -->|yes| win
 win --> winsuu
 winsuu --> total
-total --> end1
 if -->|no| loose
 loose --> total
 total --> end1
