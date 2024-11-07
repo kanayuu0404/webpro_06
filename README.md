@@ -34,14 +34,19 @@ hito["プレイヤーの手を決定"]
 if{"プレイヤーの手はcpuの手に勝ったか"}
 win["勝ち"]
 loose["負け"]
+winsuu["勝利数を1増やす"]
+total["試合数を1増やす"]
 
 start --> cpu
 cpu --> hito
 hito --> if
 if -->|yes| win
-win --> end1
+win --> winsuu
+winsuu --> total
+total --> end1
 if -->|no| loose
-loose --> end1
+loose --> total
+total --> end1
 ```
 
 GET /dice HTTP/1.1
