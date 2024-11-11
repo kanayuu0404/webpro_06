@@ -9,12 +9,9 @@
     <p>例:6面(1~6)のサイコロを2個振る</p>
     <p>  2d6 → 3,4 → 3+4 → 7</p>
     <form action="/dice">
-        <input type="text" name="kosuu" required>
+        <input type="number" name="kosuu" value="0" required>
         d
-        <input type="text" name="men" required>
-        <label for="kosuu"></label>
-        <label for="men"></label>
-        <input type="hidden" name="dice" value="<%= dice %>">
+        <input type="number" name="men" value="0" required>
         <input type="submit" values="振る">
     </form>
     <hr>

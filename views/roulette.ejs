@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ルーレット</title>
+</head>
+<body>
+    <p>1~100の数字がランダムに選ばれます</p>
+    <p>選ばれる数が偶数か奇数か，または51以上か未満かを予想してコインを賭けてね</p>
+    <hr>
+    <p>持っているコイン:<%= have %>枚</p>
+    <form action="/roulette">
+        <label for="guusuu">偶数に賭けるコイン:</label>
+        <input type="number" id="guusuu" name="guusuu" value="0" required>
+
+        <label for="kisuu">奇数に賭けるコイン:</label>
+        <input type="number" id="kisuu" name="kisuu" value="0" required>
+
+        <label for="ijyou">51以上に賭けるコイン:</label>
+        <input type="number" id="ijyou" name="ijyou" value="0" required>
+
+        <label for="miman">51未満に賭けるコイン:</label>
+        <input type="number" id="miman" name="miman" value="0" required>
+
+        <input type="submit" values="回す">
+        <input type="hidden" name="have" value="<%= have %>">
+        <input type="hidden" name="get" value="0">
+    </form>
+    <p>選ばれた数:<%= num %></p>
+    <p>今回のコイン増減:<%= get %>枚</p>
+</body>
+</html>

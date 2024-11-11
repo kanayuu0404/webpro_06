@@ -116,13 +116,37 @@ app.get("/dice", (req, res) => {
   res.render('dice', {dice: dice, dices: dices, kosuu: kosuu, men: men});
 });
 
-app.get("/luck3", (req, res) => {
-  const num = Math.floor( Math.random() * 20 + 1 );
-  let luck3 = '';
-  if( num==1 ) luck3 = '大当たり';
-  else if( num >= 2 && num < 5 ) luck3 = '当たり';
-  else if( num >= 5 && num <= 20 ) luck3 = 'ハズレ';
-  res.render( 'luck3', {number:num, luck3:luck3} );
+app.get("/roulette", (req, res) => {
+  let guusuu = Number(req.query.guusuu);    // 偶数に賭けたコインの枚数
+  let kisuu = Number(req.query.kisuu);      // 奇数に賭けたコインの枚数
+  let ijyou = Number(req.query.ijyou);      // 51以上に賭けたコインの枚数
+  let miman = Number(req.query.miman);      // 51未満に賭けたコインの枚数
+  let get = Number(req.query.get);          // 増減したコインの枚数
+  let have = Number(req.query.have);        // 持っているコインの枚数
+
+  if (!guusuu && !kisuu && !ijyou && !miman) {
+    return res.sendFile(path.join(__dirname, "public", "roulette.html"));
+  }
+
+  const num = Math.floor( Math.random() * 100 + 1 );
+
+  if (num % 2 == 0 ) {
+    get = get + guusuu*2;
+  }
+  else{
+    get = get + kisuu*2;
+  }
+  if (num >= 51 ) {
+    get = get + ijyou*2;
+  }
+  else{
+    get = get + miman*2;
+  }
+  
+  get = get - guusuu - kisuu - ijyou - miman;
+  have = have + get;
+
+  res.render( 'roulette', {get:get, have:have, num:num} );
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));

@@ -83,7 +83,7 @@ sitei --> for
 for --> roll
 roll --> dice
 dice --> dices
-dices -->|「指定したダイスの個数分繰り返し」| for
+dices -->|指定したダイスの個数回繰り返し| for
 dices --> hyouji1
 hyouji1 --> hyouji2
 hyouji2 --> end1
