@@ -1,6 +1,36 @@
 # webpro_06
 2024/10/29
 
+## 挨拶その1
+
+### ファイル一覧
+ファイル名 | 説明
+-|-
+app5.js | プログラム本体
+views/hello1.ejs | 挨拶1の表示コード
+
+### 使用手順
+1. ターミナルでapp5.js を起動する(node app5.js)
+1. 別のターミナルを開き8080のポートに対応させる(telnet localhost 8080)
+1. 8080ポートに挨拶その1のプログラムを読み込ませる
+(GET /hello1 HTTP/1.1
+Host: localhost)
+1. Webブラウザで[http://localhost:8080/hello1]にアクセスする
+
+### フローチャート
+```mermaid
+flowchart TD;
+
+start["開始"];
+end1["終了"]
+aisatu1["挨拶1を表示"]
+aisatu2["挨拶2を表示"]
+
+start --> aisatu1
+aisatu1 --> aisatu2
+aisatu2 --> end1
+```
+
 
 ## じゃんけん
 
