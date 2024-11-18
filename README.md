@@ -7,7 +7,42 @@
 ファイル名 | 説明
 -|-
 app5.js | プログラム本体
-views/hello1.ejs | 挨拶1の表示コード
+views/hello1.ejs | 挨拶その1の表示コード
+
+### 使用手順
+1. ターミナルでapp5.js を起動する(node app5.js)
+1. 別のターミナルを開き8080のポートに対応させる(telnet localhost 8080)
+1. 8080ポートに挨拶その1のプログラムを読み込ませる
+(GET /hello1 HTTP/1.1
+Host: localhost)
+1. Webブラウザで[http://localhost:8080/hello1]にアクセスする
+
+### フローチャート
+```mermaid
+flowchart TD;
+
+start["開始"];
+end1["終了"]
+dainyuu1["変数1に挨拶1を代入する"]
+dainyuu2["変数2に挨拶2を代入する"]
+hennsuu1["変数1を表示"]
+hennsuu2["変数2を表示"]
+
+start --> dainyuu1
+dainyuu1 --> dainyuu2
+dainyuu2 --> hennsuu1
+hennsuu1 --> hennsuu2
+hennsuu2 --> end1
+```
+
+
+## 挨拶その2
+
+### ファイル一覧
+ファイル名 | 説明
+-|-
+app5.js | プログラム本体
+views/hello1.ejs | 挨拶その2の表示コード
 
 ### 使用手順
 1. ターミナルでapp5.js を起動する(node app5.js)
