@@ -121,7 +121,6 @@ kake["選ばれる数字を予測する"]
 roulette["1から100までの間の整数からランダムに選ぶ"]
 syori["予想があたった場合はコインを増やし，ハズレた場合は減らす"]
 if{"持ちコインが1枚以上あるか"}
-hyouji["選ばれた数，コインの増減，現在の持ちコインを表示する"]
 over["ゲームオーバー画面を表示"]
 reset["ゲームをリセット"]
 
@@ -129,8 +128,7 @@ start --> kake
 kake --> roulette
 roulette --> syori
 syori --> if
-if --> |yes| hyouji
-hyouji --> kake
+if --> |yes| kake
 if --> |no| over
 over --> reset
 reset --> kake
