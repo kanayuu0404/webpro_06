@@ -122,7 +122,6 @@ roulette["1から100までの間の整数からランダムに選ぶ"]
 syori["予想があたった場合はコインを増やし，ハズレた場合は減らす"]
 if{"持ちコインが1枚以上あるか"}
 over["ゲームオーバー画面を表示"]
-reset["ゲームをリセット"]
 
 start --> kake
 kake --> roulette
@@ -130,7 +129,6 @@ roulette --> syori
 syori --> if
 if --> |yes| kake
 if --> |no| over
-over --> reset
-reset --> kake
-reset --> end1
+over --> |ゲームをリセット| kake
+over --> end1
 ```
