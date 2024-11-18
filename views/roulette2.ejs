@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ルーレット</title>
+</head>
+<body>
+    <p style="font-size: 50px;">破産</p>
+    <p>残念ながら持ちコインすべて失いました</p>
+    <p>やり直したい場合は「人生リセット」ボタンを押してください</p>
+    <p>持っているコイン: <%= have %>枚</p>
+    <p>選ばれた数: <%= num %></p>
+    <p>今回のコイン増減: <%= get %>枚</p>
+    
+    <form action="/roulette">
+        <input type="submit" value="人生リセット">
+        <input type="hidden" name="have" value="100"> 
+        <input type="hidden" name="get" value="0">
+    </form>
+</body>
+</html>

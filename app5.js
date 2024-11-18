@@ -124,29 +124,36 @@ app.get("/roulette", (req, res) => {
   let get = Number(req.query.get);          // 増減したコインの枚数
   let have = Number(req.query.have);        // 持っているコインの枚数
 
+  // 初回アクセスの場合は、roulette1.html を表示
   if (!guusuu && !kisuu && !ijyou && !miman) {
     return res.sendFile(path.join(__dirname, "public", "roulette.html"));
   }
 
-  const num = Math.floor( Math.random() * 100 + 1 );
+  const num = Math.floor(Math.random() * 100 + 1);
 
-  if (num % 2 == 0 ) {
-    get = get + guusuu*2;
+  // 偶数か奇数か
+  if (num % 2 == 0) {
+    get = get + guusuu * 2;
+  } else {
+    get = get + kisuu * 2;
   }
-  else{
-    get = get + kisuu*2;
+
+  // 51以上か51未満か
+  if (num >= 51) {
+    get = get + ijyou * 2;
+  } else {
+    get = get + miman * 2;
   }
-  if (num >= 51 ) {
-    get = get + ijyou*2;
-  }
-  else{
-    get = get + miman*2;
-  }
-  
+
   get = get - guusuu - kisuu - ijyou - miman;
   have = have + get;
 
-  res.render( 'roulette', {get:get, have:have, num:num} );
+  // 破産している場合は破産画面へ、していない場合は通常画面へ
+  if (have <= 0) {
+    res.render('roulette2', { get: get, have: have, num: num });
+  } else {
+    res.render('roulette1', { get: get, have: have, num: num });
+  }
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
