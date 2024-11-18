@@ -98,6 +98,39 @@ icon --> end1
 ```
 
 
+## おみくじ
+
+### ファイル一覧
+ファイル名 | 説明
+-|-
+app5.js | プログラム本体
+views/luck.ejs | luckの表示コード
+
+### 使用手順
+1. ターミナルでapp5.js を起動する(node app5.js)
+1. 別のターミナルを開き8080のポートに対応させる(telnet localhost 8080)
+1. 8080ポートにおみくじのプログラムを読み込ませる
+(GET /luck HTTP/1.1
+Host: localhost)
+1. Webブラウザで[http://localhost:8080/luck]にアクセスする
+
+### フローチャート
+```mermaid
+flowchart TD;
+
+start["開始"];
+end1["終了"]
+omikuji["1~6の整数からランダムに選ぶ"]
+unnsei["選ばれた数に対する運勢を決定"]
+luck["運勢を表示"]
+
+start --> omikuji
+omikuji --> unnsei
+unnsei --> luck
+luck --> end1
+```
+
+
 ## じゃんけん
 
 ### ファイル一覧
