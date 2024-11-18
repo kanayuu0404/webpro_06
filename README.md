@@ -88,3 +88,51 @@ dices --> hyouji1
 hyouji1 --> hyouji2
 hyouji2 --> end1
 ```
+
+
+## ルーレット
+
+### ファイル一覧
+ファイル名 | 説明
+-|-
+app5.js | プログラム本体
+public/roulette.html | ルーレットの開始画面
+views/roulette1.ejs | ルーレットの表示コード
+views/roulette2.ejs | ルーレットのゲームオーバー表示コード
+
+### 使用手順
+1. ターミナルでapp5.js を起動する(node app5.js)
+1. 別のターミナルを開き8080のポートに対応させる(telnet localhost 8080)
+1. 8080ポートにルーレットのプログラムを読み込ませる
+(GET /roulette HTTP/1.1
+Host: localhost)
+1. Webブラウザで[http://localhost:8080/roulette]にアクセスする
+1. ルーレットで次に出てくる数字が偶数,奇数,51以上,51未満かを予想してコインを賭ける
+1. 予想があたったら賭けたコインが倍になって返ってくる
+1. コインを全て無くしたらゲームオーバー(再びやりたい場合はリセットボタンを押す)
+
+### フローチャート
+```mermaid
+flowchart TD;
+
+start["開始"];
+end1["終了"]
+kake["選ばれる数字を予測する"]
+roulette["1から100までの間の整数からランダムに選ぶ"]
+syori["予想があたった場合はコインを増やし，ハズレた場合は減らす"]
+if{"持ちコインが1枚以上あるか"}
+hyouji["選ばれた数，コインの増減，現在の持ちコインを表示する"]
+over["ゲームオーバー画面を表示"]
+reset["ゲームをリセット"]
+
+start --> kake
+kake --> roulette
+roulette --> syori
+syori --> if
+if --> |yes| hyouji
+hyouji --> kake
+if --> |no| over
+over --> reset
+reset --> kake
+reset --> end1
+```
