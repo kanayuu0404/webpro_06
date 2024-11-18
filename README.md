@@ -1,5 +1,4 @@
 # webpro_06
-2024/10/29
 
 ## 挨拶その1
 
@@ -42,15 +41,15 @@ hennsuu2 --> end1
 ファイル名 | 説明
 -|-
 app5.js | プログラム本体
-views/hello1.ejs | 挨拶その2の表示コード
+views/hello2.ejs | 挨拶その2の表示コード
 
 ### 使用手順
 1. ターミナルでapp5.js を起動する(node app5.js)
 1. 別のターミナルを開き8080のポートに対応させる(telnet localhost 8080)
-1. 8080ポートに挨拶その1のプログラムを読み込ませる
-(GET /hello1 HTTP/1.1
+1. 8080ポートに挨拶その2のプログラムを読み込ませる
+(GET /hello2 HTTP/1.1
 Host: localhost)
-1. Webブラウザで[http://localhost:8080/hello1]にアクセスする
+1. Webブラウザで[http://localhost:8080/hello2]にアクセスする
 
 ### フローチャート
 ```mermaid
@@ -64,6 +63,38 @@ aisatu2["挨拶2を表示"]
 start --> aisatu1
 aisatu1 --> aisatu2
 aisatu2 --> end1
+```
+
+
+## アイコン
+
+### ファイル一覧
+ファイル名 | 説明
+-|-
+app5.js | プログラム本体
+views/icon.ejs | iconの表示コード
+public/Apple_logo_black.svg | 表示させる画像ファイル
+
+### 使用手順
+1. ターミナルでapp5.js を起動する(node app5.js)
+1. 別のターミナルを開き8080のポートに対応させる(telnet localhost 8080)
+1. 8080ポートにアイコンのプログラムを読み込ませる
+(GET /icon HTTP/1.1
+Host: localhost)
+1. Webブラウザで[http://localhost:8080/icon]にアクセスする
+
+### フローチャート
+```mermaid
+flowchart TD;
+
+start["開始"];
+end1["終了"]
+gazou["画像ファイルを読み込む"]
+icon["読み込んだ画像ファイルを表示"]
+
+start --> gazou
+gazou --> icon
+icon --> end1
 ```
 
 
