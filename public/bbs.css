@@ -1,0 +1,29 @@
+.cover {
+    border-bottom: 1px solid #c0c0c0;
+    margin: 3px;
+}
+
+.name {
+    font-weight: bold;
+    width: 8em;
+    color: inherit;  /* 親要素から色を引き継ぐ */
+}
+
+.mes {
+    margin-left: 30px;
+}
+
+.number {
+    color: black;  /* 番号は黒色 */
+    cursor: pointer;  /* 番号をクリックできるようにカーソルを変更 */
+}
+
+.number:hover {
+    color: #00bcd4;  /* 番号にマウスオーバーで色が変わる */
+}
+
+/* メンション部分 */
+.mention {
+    color: #00bcd4;  /* メンションを水色にする */
+    font-weight: bold;
+}
